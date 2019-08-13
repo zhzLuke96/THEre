@@ -3,6 +3,8 @@
 
 >*require:
 - [Pwdify](https://github.com/zhzLuke96/Pwdify)
+- [mmgo](https://github.com/zhzLuke96/mmgo)
+- [rango](https://github.com/zhzLuke96/Rango)
 - marked.js (/www/assets)
 
 # todo
