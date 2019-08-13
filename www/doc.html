@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>page - THEre</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://sindresorhus.com/github-markdown-css/github-markdown.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 40px;
+            padding-top: 0;
+        }
+
+        .header {
+            background: #fff;
+            position: sticky;
+            top: 0;
+            padding: 1rem 40px;
+            margin: 0 -40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            box-shadow: -8px 10px 92px -19px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            padding: .618rem;
+            text-align: center;
+        }
+
+        #top_btn {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 20px 40px;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: .618rem;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .date {
+            text-align: right;
+            padding: 1rem 0;
+            font-size: 12px;
+        }
+
+        .commit {
+            margin: .5rem 0;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        .commit>.body {
+            padding: .5rem .5rem;
+        }
+
+        .commit>* {
+            display: inline-block;
+        }
+
+        .commit>.hd {
+            padding: .5rem 0;
+            width: 10%;
+            min-width: 100px;
+            opacity: 1;
+            font-size: .5rem;
+            text-align: right;
+            white-space: nowrap;
+        }
+        .footer > a {
+            font-weight: 100;
+            color: gray;
+            text-decoration: none;
+        }
+        .footer > hr {
+            margin-bottom: 60px;
+        }
+        .header a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+    <style>
+    #new{
+        width:100%;
+        resize:vertical;
+    }
+    #commit_hd> .header{
+        /* transition: all 1s; */
+        opacity: 0;
+        max-height: 0px;
+        box-shadow: none;
+        border: none;
+        visibility: hidden;
+        float: right;
+    }
+    #commit_hd:hover> .header{
+        float: unset;
+        visibility: visible;
+        opacity: 1;
+        max-height: 20rem;;
+    }
+
+    .locked {
+        filter: blur(5px);
+        pointer-events: none;
+        user-select: none;
+    }
+    .lockedmask {
+        display: none;
+        position: absolute;
+        /* line-height: 100vh; */
+        padding-top: calc(50vh - 2rem);
+        width: 100%;
+        text-align: center;
+        top: 0;
+        left: 0;
+        text-shadow: 2px 2px 5px #000;
+        font-weight: 100;
+        font-size: 2rem;
+    }
+    .shadow{
+        display: inline-block;
+    }
+    .shadow > span{
+        cursor: pointer;
+    }
+    .shadow > input,.shadow > button {
+        height: 2rem;
+        margin: 0;
+    }
+    .shadow > .hover{
+        opacity: 0;
+        transition: all .3s;
+    }
+    .shadow:hover > .hover{
+        opacity: 1;
+    }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <span id="top_btn">Top</span>
+    <header class="header">
+        <span><a href="./index.html">Index</a></span>
+    </header>
+    <div id="mask" class="lockedmask">
+        <span>
+            content 🔐,need 
+        </span>
+        <span class="shadow">
+            <span>
+                Access Key
+            </span>
+            <input class="hover" type="text" name="" id="">
+            <button class="hover">submit</button>
+        </span>
+    </div>
+    <div id="doc_content" class="content">
+        <div id="doc" class="markdown-body ">
+
+        </div>
+        <div class="date">
+            Last Modify: <span id="lm"></span>
+        </div>
+        
+        <div class="a_d_s">
+
+        </div>
+        
+        <div class="commits">
+            commit
+        </div>
+    </div>
+    <footer class="footer">
+        <hr>
+        <a href="#">ABOUT ME.</a>
+    </footer>
+
+    <script src="./assets/global.js"></script>
+    <script src="./assets/marked.min.js"></script>
+    <script>
+        const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut porta metus. Nunc mollis purus turpis, ac efficitur odio ultrices interdum. Sed congue tempus commodo. Nulla erat urna, iaculis eget consequat non, rutrum eu velit. Donec egestas, tortor id consectetur luctus, ante risus viverra lacus, id congue sem felis non sem. Suspendisse cursus ante neque. Suspendisse in tincidunt sem. Ut dictum nisl et convallis laoreet. Pellentesque lectus est, elementum et dapibus in, sagittis et quam. Nullam consequat, ipsum ut finibus pellentesque, dui lectus imperdiet ex, varius vulputate libero sem eu augue. Mauris gravida risus vitae lectus elementum commodo. Maecenas cursus mauris gravida justo congue, non tempus dolor dictum. Vivamus commodo turpis varius rhoncus sollicitudin.
+
+Mauris erat justo, volutpat non leo sed, feugiat convallis arcu. Donec scelerisque consequat nulla ut interdum. Nunc urna velit, rhoncus vel volutpat iaculis, tristique eu ipsum. Aliquam erat volutpat. Donec mollis sit amet ligula eu finibus. In at dui scelerisque, lobortis ipsum nec, porttitor dui. Mauris malesuada risus est, et porta quam aliquet sed. Fusce pretium leo nisi, id elementum erat egestas quis. Quisque a diam ultricies, dictum arcu eget, aliquet ligula.
+
+Suspendisse lacinia elit at tortor viverra vehicula. Fusce convallis ultricies turpis nec scelerisque. Nam convallis dui ut lacus tincidunt aliquet. Sed blandit egestas dapibus. In semper fringilla lacus, nec placerat metus gravida et. Fusce vitae posuere tellus, in sagittis metus. Sed lacinia elit egestas odio elementum pellentesque ut eget arcu. Proin aliquet odio elit, at aliquet eros molestie at.
+
+Sed fringilla turpis et risus commodo pretium sit amet ut nisl. Donec eget consequat velit. Vivamus molestie urna magna, vitae placerat lacus faucibus nec. Nulla convallis fermentum purus a dignissim. Nulla a posuere est, in blandit dolor. Ut non dolor eget enim ultrices convallis at a dolor. Praesent suscipit, felis ac dignissim placerat, erat nisi fermentum elit, sit amet porttitor lectus risus ut ligula. Cras scelerisque velit in sapien blandit, sed mollis dolor lacinia. Etiam eleifend imperdiet egestas. Praesent magna felis, gravida in purus quis, dapibus dignissim sapien.
+
+Integer nec nisl porta, dignissim est at, rhoncus mauris. Cras sed pellentesque sapien. Mauris non quam maximus, vestibulum quam eget, sagittis enim. Quisque et est id dui dictum semper ut vitae ante. Curabitur elementum mollis quam et tincidunt. Vivamus aliquet, mi sed maximus suscipit, urna dolor condimentum metus, a pellentesque orci leo sed ligula. Ut porttitor nulla sed diam tincidunt, id tempus urna laoreet. Curabitur laoreet, elit rhoncus fringilla porta, sapien ante ultrices dolor, a vulputate ipsum lectus rutrum augue. Sed tincidunt ante nunc, eget ornare mi hendrerit congue.`
+
+
+        top_btn.onclick = function () {
+            timer = setInterval(function () {
+                var sScrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                var iSpeed = Math.floor(-sScrollTop / 12);
+                document.body.scrollTop = document.documentElement.scrollTop = sScrollTop + iSpeed;
+                document.body.onmousewheel = function(){
+                    return false;
+                };
+                if (sScrollTop <= 0) {
+                    clearInterval(timer);
+                    document.body.onmousewheel = function(){
+                        return true;
+                    };
+                }
+            }, 30);
+        }
+
+        function getHashParameter(key) {
+            var params = getHashParameters();
+            return params[key];
+        }
+
+        function getHashParameters() {
+            var arr = (location.hash || "").replace(/^\#/, '').split("&");
+            var params = {};
+            for (var i = 0; i < arr.length; i++) {
+                var data = arr[i].split("=");
+                if (data.length == 2) {
+                    params[data[0]] = data[1];
+                }
+            }
+            return params;
+        }
+        function initInfo(docRes) {
+            if(docRes.pwd){
+                doc_content.classList.add("locked")
+                mask.style.display = "unset";
+                docRes = {
+                    title: "error",
+                    content: "# THIS LOCKED DOCUMENT\n"+lorem,
+                    lastModify: Date.now()
+                }
+            }
+            let md = marked(docRes.content)
+            doc.innerHTML = md
+            lm.innerHTML = new Date(docRes.lastModify).toLocaleDateString()
+            document.title = docRes.title + " - THEre"
+        }
+        window.onload = () => {
+            let idx = getHashParameter("index")
+            if (!idx) {
+                initInfo({
+                    title: "error",
+                    content: "# ERROR REQUEST",
+                    lastModify: Date.now()
+                })
+                return
+            }
+            THEre.api.getDoc(idx).then(resp => {
+                initInfo(resp.content)
+            })
+        }
+    </script>
+</body>
+
+</html>

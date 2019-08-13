@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>home - THEre</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://sindresorhus.com/github-markdown-css/github-markdown.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            transition: all .3s;
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #docs {
+            text-align: left;
+            width: 100%;
+        }
+
+        #docs a {
+            text-decoration: none;
+        }
+
+        a {
+            color: gray;
+        }
+
+        h1>a {
+            color: black;
+        }
+
+        .tail {
+            float: right;
+            font-size: .6rem;
+        }
+
+        .title {
+            text-transform: capitalize
+        }
+    </style>
+    <style>
+        .preview [class$="_emoji"] {
+            opacity: 0;
+        }
+
+        .preview:hover [class$="_emoji"] {
+            opacity: .8;
+        }
+
+        .preview {
+            padding: 2.5% 7%;
+            margin-bottom: 1rem;
+            border-top: 1px solid rgba(175, 163, 163, .5);
+        }
+
+        .preview>* {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            max-width: 960px;
+        }
+
+        .preview>h1 {
+            font-weight: 500;
+        }
+
+        .preview>.date {
+            font-weight: 100;
+            font-size: 16px;
+        }
+
+        .preview>.body {
+            margin: 1rem;
+        }
+
+        .preview>.link>a {
+            float: right;
+            font-weight: 100;
+        }
+    </style>
+    <style>
+        .header {
+            padding: 1rem;
+        }
+
+        .header .link {
+            font-weight: 100;
+        }
+
+        .header>.left {
+            width: 60px;
+            display: inline-block;
+        }
+
+        .header>.right {
+            width: auto;
+            display: inline-block;
+        }
+
+        .footer {
+            /* padding: 4rem; */
+            height: 6rem;
+            text-align: center;
+            border-top: 1px solid rgba(175, 163, 163, .5);
+            display: flex;
+            flex-flow: column;
+            justify-content: space-around;
+            font-weight: 100;
+        }
+
+        .footer>a {
+            text-decoration: none;
+        }
+
+        #admin {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            opacity: .1;
+            color: aliceblue;
+        }
+
+        #admin>a {
+            color: aliceblue;
+        }
+
+        #admin:hover {
+            opacity: 1;
+        }
+
+        del {
+            opacity: .6;
+        }
+
+        @keyframes mymove {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 50% 100%;
+            }
+
+            100% {
+                background-position: 100% 0%;
+            }
+        }
+
+        #topbanner {
+            background: linear-gradient(90deg, #496eaa, #944fa8, #a8804f, #496eaa);
+            background-size: 1400% 300%;
+            height: 50vh;
+
+            /* text-align: center; */
+            animation: mymove 5s ease infinite;
+            font-size: 25vw;
+            color: aliceblue;
+        }
+
+        @media screen and (min-width: 720px) {
+            #topbanner {
+                font-size: 10rem;
+            }
+        }
+
+        #topbanner>.text {
+            height: 100%;
+            text-align: left;
+            line-height: 50vh;
+            padding-left: 10%;
+        }
+
+        .postkw {
+            float: right;
+            font-weight: 100;
+        }
+
+        .pwd {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="topbanner">
+        <div class="text">
+            THE<small id="dot">...</small>
+        </div>
+    </div>
+    <header class="header">
+        <div class="left">
+            <span class="logo">
+                👻
+            </span>
+        </div>
+        <div class="right">
+            <span class="title">
+                THEre
+            </span>
+            <br>
+            <span class="link">
+                github - telgaram - <del>weibo</del> - gmail
+            </span>
+        </div>
+        <div id="admin">
+            <a href="./admin.html" title="admin">[管理]</a>
+            <span>/</span>
+            <a href="#" title="qna">[Q&A]</a>
+        </div>
+    </header>
+    <div id="docs">
+        <div class="preview">
+            <h2>ALL EMPTY.</h2>
+        </div>
+    </div>
+    <footer class="footer">
+        <a href="javascript:void(0);" onclick="loadMore()"> Load more...</a>
+        <a href="javascript:void(0);"> ABOUT ME.</a>
+    </footer>
+    <script src="./assets/global.js"></script>
+    <script src="./assets/marked.min.js"></script>
+    <script>
+        const $ = q => document.querySelector(q);
+    </script>
+    <script>
+        const $docs = $("#docs");
+        let pageNum = 0;
+        const doc_shift = doc => ({
+            idx: doc.idx || 0,
+            title: doc.title || "",
+            pwd: doc.pwd || false,
+            kws: doc.kws || [],
+            lastModify: doc.lastModify || 1,
+            content: doc.content || "",
+        })
+        const doc_panel = doc => {
+            doc = doc_shift(doc)
+            return `<div class="preview">
+            <h1 class="title"><a href="/doc.html#index=${doc.idx}">${doc.title}</a>${doc.pwd?"<small class='pwd' title='locked'>🔐</small>":""}</h1>
+            <div class="kws"><span class="postkw" title="key word">#${doc.kws.join(" #")}</span></div>
+            <p class="date">${new Date(doc.lastModify).toDateString()}</p>
+            <div class="body markdown-body">${marked(doc.summary)}</div>
+            <div class="link">
+                <a href="./doc.html#index=${doc.idx}">continue...</a>
+            </div>
+        </div>`
+        }
+
+        function flash_list() {
+            docs.innerHTML = "";
+            THEre.api.getDocs(0).then(resp => {
+                let docs = resp.content;
+                if (docs.length == 0) return
+                for (const doc of docs) {
+                    let html = doc_panel(doc);
+                    let ele = docTool.NewEleWithHTML(html, "p");
+                    docTool.append($docs, ele);
+                }
+                // console.log("flash")
+                pageNum += 1;
+            });
+        }
+
+        function loadMore() {
+            THEre.api.getDocs(pageNum + 1).then(resp => {
+                let docs = resp.content;
+                if (docs.length == 0) {
+                    alert("no more.");
+                    return
+                }
+                for (const doc of docs) {
+                    let html = doc_panel(doc);
+                    let ele = docTool.NewEleWithHTML(html, "p");
+                    docTool.append($docs, ele);
+                }
+                pageNum += 1;
+                // console.log("more")
+            })
+        }
+    </script>
+    <script>
+        const $dot = $("#dot")
+
+        function dotdot() {
+            let textarr = ["", "r", "re", "re.", "re..", "re...", "re..", "re.", "re", "r"]
+            let cur = 0
+
+            function nxt() {
+                $dot.innerHTML = textarr[cur]
+                cur = (cur + 1) % textarr.length
+                setTimeout(nxt, 500)
+            }
+            nxt()
+        }
+        window.onload = () => {
+            flash_list()
+            dotdot()
+        }
+    </script>
+</body>
+
+</html>

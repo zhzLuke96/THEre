@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>admin - THEre</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            margin: 2rem;
+        }
+        hr{
+            margin-top: 2rem;
+        }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <h1>
+            new doc
+        </h1>
+        title*:<input type="text" name="" id="nwtitle">
+        <br>
+        password:<input type="text" placeholder="password" id="nwpwd">
+        <br>
+        init idx:<input type="text" placeholder="post idx" id="nwidx">
+        <br>
+        content*:<textarea cols="100" rows="25" placeholder="makerdown" id="nwtext"></textarea>
+        <br>
+        <button onclick="nwBtn()">submit</button>
+        <hr>
+        <h1>
+            del doc
+        </h1>
+        title:<input type="text" id="deltitle"><button onclick="delBtnTitle()">submit</button>
+        <br>
+        idx:<input type="text" id="delidx"><button onclick="delBtn()">submit</button>
+        <hr>
+        <h1>
+            info
+        </h1>
+        <hr>
+        <script src="./assets/global.js"></script>
+        <script>
+            function nwBtn(){
+                THEre.api.addDoc({
+                        title:nwtitle.value,
+                        idx:nwidx.value,
+                        pwd:nwpwd.value,
+                        content:nwtext.value,
+                    }).then(resp => {
+                    alert(resp)
+                    console.log(resp)
+                })
+            }
+
+            function delBtn(){
+                THEre.api.delDoc(delidx.value).then(resp => {
+                    alert(resp)
+                    console.log(resp)
+                })
+            }
+
+            function delBtnTitle(){
+                THEre.api.delDocTitle(deltitle.value).then(resp => {
+                    alert(resp)
+                    console.log(resp)
+                })
+            }
+        </script>
+    </body>
+</html>
